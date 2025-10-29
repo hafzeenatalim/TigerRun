@@ -1,0 +1,53 @@
+
+Project level Secrets
+
+
+KEYSTORE_PASSWORD - HNGFFDGDSFDSGDSGVBN
+
+KEY_PASSWORD - HNGFFDGDSFDSGDSGVBN
+
+KEY_ALIAS - aliasFDHFDH
+
+
+--------------
+
+bundleRelease
+
+--------------
+
+
+
+#!/bin/bash
+set -e
+
+# Путь для keystore
+KEYSTORE_PATH="$BITRISE_SOURCE_DIR/my-release-key.jks"
+
+# Параметры берём из Secrets Bitrise
+KEYSTORE_PASSWORD="${KEYSTORE_PASSWORD:?Не задан секрет KEYSTORE_PASSWORD}"
+KEY_PASSWORD="${KEY_PASSWORD:?Не задан секрет KEY_PASSWORD}"
+KEY_ALIAS="${KEY_ALIAS:?Не задан секрет KEY_ALIAS}"
+DNAME="${DNAME:-CN=Bitrise, OU=CI, O=MyCompany, L=City, S=Region, C=US}"
+
+# Проверяем, существует ли keystore
+if [ -f "$KEYSTORE_PATH" ]; then
+  echo "✅ Keystore уже существует: $KEYSTORE_PATH"
+else
+  echo "⚙️ Keystore не найден. Создаём новый..."
+  keytool -genkeypair -v \
+    -keystore "$KEYSTORE_PATH" \
+    -storepass "$KEYSTORE_PASSWORD" \
+    -keypass "$KEY_PASSWORD" \
+    -keyalg RSA -keysize 2048 -validity 10000 \
+    -alias "$KEY_ALIAS" \
+    -dname "$DNAME"
+  echo "✅ Keystore создан: $KEYSTORE_PATH"
+fi
+
+# Копируем в директорию deploy для скачивания через артефакты
+mkdir -p "$BITRISE_DEPLOY_DIR"
+cp "$KEYSTORE_PATH" "$BITRISE_DEPLOY_DIR/"
+
+echo "📦 Keystore готов и доступен для скачивания как артефакт"
+
+

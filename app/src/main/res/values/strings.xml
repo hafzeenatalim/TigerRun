@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">TigerRun</string>
+    <string name="game_title">Tiger Run</string>
+    <string name="level_1">Level\n1</string>
+    <string name="level_2">Level\n2</string>
+    <string name="level_3">Level\n3</string>
+    <string name="level_4">Level\n4</string>
+    <string name="level_5">Level\n5</string>
+    <string name="score_0">Score: 0</string>
+    <string name="score">Score: %d</string>
+    <string name="game_over">Game Over!</string>
+    <string name="final_score">Final Score: %d</string>
+    <string name="restart">Restart</string>
+    <string name="menu">Menu</string>
+    <string name="locked">Locked</string>
+    <string name="pause">Pause</string>
+    <string name="continue_game">Continue</string>
+    <string name="exit_to_menu">Exit to Menu</string>
+    <string name="pause_message">Game Paused</string>
+</resources>

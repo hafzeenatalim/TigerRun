@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="menu_background">#FF2196F3</color>
+    <color name="level_button">#FF4CAF50</color>
+    <color name="level_button_locked">#FF9E9E9E</color>
+    <color name="tiger_color">#FFFF9800</color>
+    <color name="obstacle_color">#FF795548</color>
+    <color name="artifact_color">#FFFFD700</color>
+    <color name="ground_color">#FF8BC34A</color>
+    <color name="pause_button">#FF607D8B</color>
+</resources>
